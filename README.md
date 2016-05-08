@@ -18,7 +18,7 @@
 
 ## Schema screenshot
 
--![Schema](../public/final_schema.png)
+-![Schema](./public/final_schema.png)
 
 ## Installation Notes
 
@@ -29,4 +29,4 @@
 
 ## Deployment details and link
 
-- [App Name Link](https://fathomless-chamber-75179.herokuapp.com/users/sign_in)
+- [App Name Link](https://fathomless-chamber-75179.herokuapp.com)
