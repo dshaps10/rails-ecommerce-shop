@@ -1,0 +1,20 @@
+-flash.each do |message_type, message|
+  %div{:class => "alert alert-#{message_type}"}= message
+= form_for :product, url: products_path do |f|
+  - if @product.errors.any?
+    .error_explanation
+      %h2= pluralize(@product.errors.count, "error") + " prohibited this product from being saved"
+    %ul
+      - @product.errors.full_messages.each do |msg|
+        %li= msg
+
+  =f.label "Product Name"
+  =f.text_field :name
+  =f.label "Description"
+  =f.text_field :description
+  =f.label "Price"
+  =f.text_field :list_price
+  =f.label "Quantity in Stock"
+  =f.number_field :quantity
+  =f.submit
+

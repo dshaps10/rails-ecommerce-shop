@@ -1,0 +1,21 @@
+.container.show
+  .col-md-12
+    %h1 Your Shopping Cart
+    -if !@orders.empty?
+      %table{:cellpadding => "50"}
+        %tr
+          %th Product
+          %th Quantity
+          %th Price
+        - total = 0
+        - @orders.each do |order|
+          %tr
+            %td= link_to order.product.name, order.product
+            %td= order.quantity
+            - total += calculate_price(order)
+            %td= "$" + calculate_price(order).round(2).to_s
+      %h3= "Total: $" + total.round(2).to_s
+      =button_to("Checkout", checkout_path, method: :get)
+    -else
+      %h3 Your cart is empty
+      = link_to "Return Home", products_path

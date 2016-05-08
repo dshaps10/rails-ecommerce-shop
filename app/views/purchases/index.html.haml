@@ -1,0 +1,15 @@
+.container.show
+  .col-md-12
+    %h1 Your Purchase History
+    %table{:cellspacing => "15"}
+      %tr
+        %th Item
+        %th Quantity
+        %th Price
+        %th Date
+      - @purchases.each do |purchase|
+        %tr
+          %td= link_to purchase.product.name, purchase.product
+          %td= purchase.quantity
+          %td= "$" + calculate_price(purchase).round(2).to_s
+          %td= purchase.created_at.strftime('%b %d, %Y')

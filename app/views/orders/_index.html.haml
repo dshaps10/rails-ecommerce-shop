@@ -1,0 +1,19 @@
+.container.show
+  .col-md-12
+    %h1 Your Shopping Cart
+    %table{:cellpadding => "50"}
+      %tr
+        %th Product
+        %th Quantity
+        %th Price
+      - total = 0
+      - orders.each do |order|
+        -if order.purchased == nil
+          %tr
+            %td= link_to order.product.name, order.product
+            %td= order.quantity
+            - total += calculate_price(order)
+            %td= "$" + calculate_price(order).to_s
+    %h3= "Total: $" + total.round(2).to_s
+    %a= link_to "View Cart"
+

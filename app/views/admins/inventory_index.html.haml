@@ -1,0 +1,17 @@
+%h1 Products (Admin View)
+%table{:cellpadding => "50"}
+  %tr
+    %th Name
+    %th Quantity
+    %th Price
+  -@products.each do |product|
+    %tr
+      %td= link_to product.name, product
+      %td= product.quantity
+      %td= "$" + product.list_price.to_s
+      %td= link_to 'Edit ', edit_product_path(product)
+      %td= link_to ' Delete', product_path(product), method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+= link_to "New Product", new_product_path
+

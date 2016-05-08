@@ -1,0 +1,15 @@
+/*
+  Place all the styles related to the matching controller here.
+  They will automatically be included in application.css.
+*/
+table {
+  font-size: 1em;
+}
+
+table th {
+  padding: 10px;
+}
+
+table td {
+  padding: 10px;
+}

@@ -1,0 +1,33 @@
+-flash.each do |message_type, message|
+  %div{:class => "alert alert-#{message_type}"}= message
+
+.container.show
+  .col-md-12.col-sm-12
+    .thumbnail
+      %img.img-responsive{:alt => "", :src => @product.img_link}
+        .caption-full
+          %h4.pull-right= "$" + @product.list_price.to_s
+          %h4= @product.name
+          %p= @product.description
+          %ul
+          -@product.categories.each do |category|
+            %li
+              =category.name
+          %br/
+          -if @product.quantity == 0
+            %h3 SOLD OUT
+          -else
+          .order
+            = form_for :order, url: orders_path, remote: true, method: :post, html: {class: "order-form"} do |f|
+              %strong Select Quantity:
+              %select{:name => "quantity"}
+                - counter = 1
+                - @product.quantity.times do
+                  %option{:value => counter}= counter
+                  - counter += 1
+              %br/
+              %br/
+              -if current_user
+                =f.submit "Add to Cart"
+              -else
+                =link_to "Sign in to Purchase", new_user_session_path
